@@ -1,0 +1,11 @@
+.vscode
+.idea
+pwm.egg-info
+dist
+build
+pyinstaller_dist
+venv
+*.spec
+*.pyc
+pwm/__pycache__
+notes.txt

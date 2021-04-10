@@ -1,0 +1,17 @@
+body
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+#site-name{
+    font-family: 'Pacifico', cursive;
+    font-size: 30px;
+    color: black;
+    margin-left: 10%;
+}
+
+ul{
+	list-style: none;
+	color: red;
+}

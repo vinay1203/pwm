@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+{% block head %}
+<title> Configure page</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class = "row justify-content-center">
+    <div class = "col second">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('configured') }}">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Enter Passcode. Used when you forget password</label>
+                <input name="passcode" type="text" class="form-control" placeholder="Enter passcode in the format DDMMYYYY of DOB" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Enter refresh token seconds. Default is 3600 </label>
+                <input name="refresh-token-sec" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter refresh token seconds" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Enter a secret.</label>
+                <input name="secret" type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter secret." required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+    </div>
+</div>
+{% endblock %}

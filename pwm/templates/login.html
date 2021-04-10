@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% block head %}
+<title> Configure page</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class = "row justify-content-center">
+    <div class = "col second">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('validate') }}">
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+    </div>
+</div>
+{% endblock %}
