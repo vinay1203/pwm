@@ -13,6 +13,7 @@ import getpass
 import base64
 import click
 import hashlib
+from functools import wraps
 
 version = "1.0.0"
 pwm_config_dir = "~/.pwm"
@@ -247,6 +248,7 @@ def authenticate(password):
 
 
 def configure_dec(function):
+    @wraps(function)
     def wrapper(*args, **kwargs):
         resp = is_configured()
         if not resp["configured"] or len(resp["missing_fields"])>0:
@@ -258,6 +260,7 @@ def configure_dec(function):
 
 
 def authenticate_dec(function):
+    @wraps(function)
     def wrapper(*args, **kwargs):
         authenticated = is_authenticated()
         if authenticated:

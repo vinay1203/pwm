@@ -12,7 +12,7 @@ setup(
         ]
     },
     packages=find_packages(),
-    install_requires=['click', 'pyperclip', 'bcrypt', 'itsdangerous', 'cryptography', 'sqlalchemy', 'tabulate'],
+    install_requires=['click', 'pyperclip', 'bcrypt', 'itsdangerous', 'cryptography', 'sqlalchemy', 'tabulate', flask],
     platforms=['macOS', 'linux'],
     keywords=['password', 'utility', 'util', 'cli']
 )

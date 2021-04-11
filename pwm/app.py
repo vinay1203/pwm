@@ -6,10 +6,6 @@ import pwm.functions as funcs
 user_name = funcs.user_name
 app = Flask(__name__)
 
-secret = funcs.get_from_auth("secret")[0].value
-app.config['SECRET_KEY']= secret
-
-
 def validate_token(token):
     s = Serializer(user_name)
     try:
@@ -60,6 +56,7 @@ def configure():
 
 @app.route("/configured", methods = ["POST"])
 def configured():
+
     passcode = request.form["passcode"]
     refresh_token_sec = request.form["refresh-token-sec"]
     password = request.form["password"]
@@ -107,6 +104,9 @@ def configured():
         if resp:
             flash("Error while configuring creds, Try again.")
             return redirect(url_for('configure'))
+    
+    secret = funcs.get_from_auth("secret")[0].value
+    app.config['SECRET_KEY']= secret
     
     response = funcs.authenticate(password)
     if response:

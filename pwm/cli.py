@@ -10,6 +10,7 @@ from tabulate import tabulate
 pwm_config_dir = funcs.pwm_config_dir
 
 @click.group(name='main', invoke_without_command=True)
+@click.version_option(version=funcs.version)
 def main():
     """
     The utiility for management of the passwords 
@@ -218,6 +219,7 @@ def put(alias, key):
 @funcs.configure_dec
 @funcs.authenticate_dec
 def update(alias):
+    """Update the key and password using alias"""
     if alias == "":
         alias = click.prompt("Enter the alias you want to update ")
         alias = alias.strip()
